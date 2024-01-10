@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main{
+public class Main {
     public static void main(String[] args) {
         // Variables de clase
         Scanner sc = new Scanner(System.in);
@@ -15,19 +15,22 @@ public class Main{
                 Menu();
                 opcion = sc.nextInt();
 
-                if (opcion == 1){
+                if (opcion == 1) {
+                    radio.switchOnOff();
 
-                }else if (opcion == 2){
+                } else if (opcion == 2) {
 
-                }else if (opcion == 3){
+                } else if (opcion == 3) {
                     radio.nextStation();
-                }else if (opcion == 4){
-                    
-                }else if (opcion == 5){
-                    
-                }else if (opcion == 6){
-                    
-                }else{
+                } else if (opcion == 4) {
+
+                } else if (opcion == 5) {
+
+                } else if (opcion == 6) {
+                    continueProgram = false;
+                    System.out.println("¡Gracias por usar el programa!");
+
+                } else {
                     System.out.println("Opción no disponible, ingrese una opción válida.");
                 }
 
@@ -39,7 +42,8 @@ public class Main{
 
     }
 
-    public static void Menu(){
+    public static void Menu() {
+        System.out.println();
         System.out.println("----------BIENVENIDO----------");
         System.out.println("1. Encencer/Apagar ");
         System.out.println("2. Cambiar frecuencia ");

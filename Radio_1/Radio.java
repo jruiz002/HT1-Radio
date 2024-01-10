@@ -1,14 +1,13 @@
-public class Radio implements IRadio{
+public class Radio implements IRadio {
     private boolean state;
     private boolean frecuence;
     private int numberStationAM;
-    private double listAM [];
-    private double listFM [];
+    private double listAM[];
+    private double listFM[];
     private double numberStationFM;
 
-
     public Radio() {
-        this.state = true;
+        this.state = false;
         this.frecuence = true;
         this.listAM = new double[12];
         this.listFM = new double[12];
@@ -16,13 +15,11 @@ public class Radio implements IRadio{
         this.numberStationAM = 530;
     }
 
-
     @Override
     public void saveStation(int buttonId, double station) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'saveStation'");
     }
-
 
     /**
      * Método que permite ver la frecuencia en la que se encuentra el radio.
@@ -32,7 +29,7 @@ public class Radio implements IRadio{
         if (frecuence) {
             return true;
         }
-            return false;
+        return false;
     }
 
     /**
@@ -43,7 +40,7 @@ public class Radio implements IRadio{
         if (state) {
             return true;
         }
-            return false;
+        return false;
     }
 
     /**
@@ -55,13 +52,16 @@ public class Radio implements IRadio{
         throw new UnsupportedOperationException("Unimplemented method 'selectStation'");
     }
 
-
     @Override
     public void switchOnOff() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'switchOnOff'");
+        if (state){
+            state = false;
+            System.out.println("El radio se apagó. ");
+        } else{
+            state = true;
+            System.out.println("El radio se encendió. ");
+        }
     }
-
 
     @Override
     public void switchAMFM() {
@@ -70,33 +70,29 @@ public class Radio implements IRadio{
     }
 
     /**
-     * Método que permite cambiar la estación 
+     * Método que permite cambiar la estación
      */
     @Override
     public double nextStation() {
-        if (isOn()){
+        if (isOn()) {
             if (isAm()) {
                 if (numberStationAM == 1610) {
                     numberStationAM = 530;
+                } else {
+                    numberStationAM += 10;
                 }
-                else {
-                    numberStationAM += 10; 
-                }
-            System.err.println("Estacion actual:" + numberStationAM);
-            return numberStationAM;
-            }
-            else { 
-                if(numberStationFM == 107.9) {
+                System.err.println("Estacion actual:" + numberStationAM);
+                return numberStationAM;
+            } else {
+                if (numberStationFM == 107.9) {
                     numberStationFM = 87.9;
-                }
-                else {
+                } else {
                     numberStationFM += 0.2;
                 }
-            System.err.println("Estacion actual:" + numberStationFM);
-             return numberStationFM;
+                System.err.println("Estacion actual:" + numberStationFM);
+                return numberStationFM;
             }
-        }
-        else {
+        } else {
             System.out.println("El radio esta apagado.");
         }
         return 0;
