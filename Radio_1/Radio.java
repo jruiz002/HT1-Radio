@@ -1,14 +1,14 @@
 public class Radio implements IRadio{
     private boolean state;
-    private boolean station;
+    private boolean frecuence;
     private double listAM [];
     private double listFM [];
     private double numberStation;
 
 
-    public Radio(boolean state, boolean station, double listAM[], double listFM[], double numberStation) {
+    public Radio(boolean state, boolean frecuence, double listAM[], double listFM[], double numberStation) {
         this.state = state;
-        this.station = station;
+        this.frecuence = frecuence;
         this.listAM = new double[12];
         this.listFM = new double[12];
         this.numberStation = numberStation;
@@ -27,18 +27,21 @@ public class Radio implements IRadio{
      */
     @Override
     public boolean isAm() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isAm'");
+        if (frecuence) {
+            return true;
+        }
+            return false;
     }
-
 
     /**
      * Método que permite saber si está apagado o encencido el radio.
      */
     @Override
     public boolean isOn() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isOn'");
+        if (state) {
+            return true;
+        }
+            return false;
     }
 
     /**
