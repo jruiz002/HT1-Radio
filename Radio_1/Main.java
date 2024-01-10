@@ -7,6 +7,7 @@ public class Main{
         Scanner sc = new Scanner(System.in);
         boolean continueProgram = true;
         int opcion = 0;
+        Radio radio = new Radio();
 
         // Loop que controla el flujo del programa
         while (continueProgram) {
@@ -19,7 +20,7 @@ public class Main{
                 }else if (opcion == 2){
 
                 }else if (opcion == 3){
-                    
+                    radio.nextStation();
                 }else if (opcion == 4){
                     
                 }else if (opcion == 5){

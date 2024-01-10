@@ -1,17 +1,19 @@
 public class Radio implements IRadio{
     private boolean state;
     private boolean frecuence;
+    private int numberStationAM;
     private double listAM [];
     private double listFM [];
-    private double numberStation;
+    private double numberStationFM;
 
 
-    public Radio(boolean state, boolean frecuence, double listAM[], double listFM[], double numberStation) {
-        this.state = state;
-        this.frecuence = frecuence;
+    public Radio() {
+        this.state = true;
+        this.frecuence = true;
         this.listAM = new double[12];
         this.listFM = new double[12];
-        this.numberStation = numberStation;
+        this.numberStationFM = 87.9;
+        this.numberStationAM = 530;
     }
 
 
@@ -72,10 +74,31 @@ public class Radio implements IRadio{
      */
     @Override
     public double nextStation() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'nextStation'");
+        if (isOn()){
+            if (isAm()) {
+                if (numberStationAM == 1610) {
+                    numberStationAM = 530;
+                }
+                else {
+                    numberStationAM += 10; 
+                }
+            System.err.println("Estacion actual:" + numberStationAM);
+            return numberStationAM;
+            }
+            else { 
+                if(numberStationFM == 107.9) {
+                    numberStationFM = 87.9;
+                }
+                else {
+                    numberStationFM += 0.2;
+                }
+            System.err.println("Estacion actual:" + numberStationFM);
+             return numberStationFM;
+            }
+        }
+        else {
+            System.out.println("El radio esta apagado.");
+        }
+        return 0;
     }
-
-
-
 }
