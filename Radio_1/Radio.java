@@ -94,8 +94,18 @@ public class Radio implements IRadio {
 
     @Override
     public void switchAMFM() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'switchAMFM'");
+        if (isOn()) {
+            if(frecuence){
+                frecuence = false;
+                System.out.println("Frecuencia actual FM");
+            }else{
+                frecuence = true;
+                System.out.println("Frecuencia actual AM");
+            }
+        }else {
+            System.out.println("El radio esta apagado.");
+        }
+        
     }
 
     /**

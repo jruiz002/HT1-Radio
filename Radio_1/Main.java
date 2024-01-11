@@ -19,7 +19,7 @@ public class Main {
                     radio.switchOnOff();
 
                 } else if (opcion == 2) {
-
+                    radio.switchAMFM();
                 } else if (opcion == 3) {
                     radio.nextStation();
                 } else if (opcion == 4) {
