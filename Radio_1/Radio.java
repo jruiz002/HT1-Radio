@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Radio implements IRadio {
     private boolean state;
     private boolean frecuence;
@@ -48,8 +51,34 @@ public class Radio implements IRadio {
      */
     @Override
     public double selectStation(int buttonId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'selectStation'");
+        Scanner sc = new Scanner(System.in);
+        try {
+            listAM[0] = 94.9;
+            if (buttonId >= 1 && buttonId <= 12){
+                if (isAm()){ // LISTA AM
+                    if (listAM[(buttonId-1)] != 0.0){
+                        System.out.println("La emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId-1)]);
+                    } else {
+                        System.out.println("Actualmente no se encuentra ninguna emisora en el botón " + buttonId);
+                    }
+    
+                } else{ // LISTA FM
+                    if (listFM[(buttonId-1)] != 0.0){
+                        System.out.println("La emisora puesta en el botón " + buttonId + " es la " + listFM[(buttonId-1)]);
+                    } else {
+                        System.out.println("Actualmente no se encuentra ninguna emisora en el botón " + buttonId);
+                    }
+
+                }
+            } else{
+                System.out.println("Opción no válida. ");
+            }
+
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida, debe ingresar un número entero.");
+            sc.nextLine();
+        }
+        return 0;
     }
 
     @Override

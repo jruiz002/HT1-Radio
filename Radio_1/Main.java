@@ -25,6 +25,14 @@ public class Main {
                 } else if (opcion == 4) {
 
                 } else if (opcion == 5) {
+                    if (radio.isOn()){
+                        System.out.println("Ingresa un valor entre 1-12 para ver la estación guardada en el botón: ");
+                        int optionSelectStation = sc.nextInt();
+                        radio.selectStation(optionSelectStation);
+
+                    } else {
+                        System.out.println("El radio esta apagado.");
+                    }
 
                 } else if (opcion == 6) {
                     continueProgram = false;
