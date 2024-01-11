@@ -23,6 +23,17 @@ public class Main {
                 } else if (opcion == 3) {
                     radio.nextStation();
                 } else if (opcion == 4) {
+                    if (radio.isOn()){
+                        System.out.println("Ingresa un valor entre 1-12 para guardar la estación actual en el botón: ");
+                        int optionSelectStation= sc.nextInt();
+                        if(radio.getFrecuence()){ //AM
+                            radio.saveStation(optionSelectStation, radio.getNumberStationAM());
+                        }else{ //FM
+                            radio.saveStation(optionSelectStation, radio.getNumberStationFM());
+                        }
+                    } else {
+                        System.out.println("El radio esta apagado.");
+                    }
 
                 } else if (opcion == 5) {
                     if (radio.isOn()){
