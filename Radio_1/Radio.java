@@ -92,6 +92,7 @@ public class Radio implements IRadio {
                     } else {
                         System.out.println("\nActualmente no se encuentra ninguna emisora en el botón " + buttonId);
                     }
+                    return listAM[(buttonId - 1)];
 
                 } else { // LISTA FM
                     if (listFM[(buttonId - 1)] != 0.0) {
@@ -102,7 +103,7 @@ public class Radio implements IRadio {
                     } else {
                         System.out.println("\nactualmente no se encuentra ninguna emisora en el botón " + buttonId);
                     }
-
+                    return listFM[(buttonId - 1)];
                 }
             } else {
                 System.out.println("\nOpción no válida. ");

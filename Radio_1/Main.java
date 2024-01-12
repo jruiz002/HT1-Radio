@@ -1,6 +1,13 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import org.junit.runner.JUnitCore;
+
 import java.text.DecimalFormat;
+
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 /**
  * Clase principal que contiene el método main para ejecutar el programa de control de un radio.
@@ -10,6 +17,14 @@ public class Main {
      * Método principal que inicia el programa y controla el flujo del mismo.
      */
     public static void main(String[] args) {
+
+        Result resultado = JUnitCore.runClasses(RadioTest.class);
+        // Mostrar resultados de las pruebas
+        for (Failure failure : resultado.getFailures()) {
+            System.out.println(failure.toString());
+        }
+        System.out.println("Pruebas unitarias pasadas: " + resultado.wasSuccessful());
+
         // Variables de clase
         Scanner sc = new Scanner(System.in);
         boolean continueProgram = true;
