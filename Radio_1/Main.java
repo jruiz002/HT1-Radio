@@ -1,7 +1,14 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
+/**
+ * Clase principal que contiene el método main para ejecutar el programa de control de un radio.
+ */
 public class Main {
+    /**
+     * Método principal que inicia el programa y controla el flujo del mismo.
+     */
     public static void main(String[] args) {
         // Variables de clase
         Scanner sc = new Scanner(System.in);
@@ -9,9 +16,16 @@ public class Main {
         int opcion = 0;
         Radio radio = new Radio();
 
+        
         // Loop que controla el flujo del programa
         while (continueProgram) {
             try {
+                DecimalFormat df = new DecimalFormat("#.#");
+                String formattedStation = df.format(radio.getFrecuence() ? radio.getNumberStationAM() : radio.getNumberStationFM());
+
+                System.err.println("\nEl radio se encuentra: " + (radio.isOn() ? "Encendido" : "Apagado") + "\n" +
+                "Frecuencia: " + (radio.getFrecuence() ? "AM" : "FM") + "\n" +
+                "Estación actual: " + formattedStation);
                 Menu();
                 opcion = sc.nextInt();
 
@@ -61,6 +75,9 @@ public class Main {
 
     }
 
+    /**
+     * Muestra el menú de opciones disponibles.
+     */
     public static void Menu() {
         System.out.println();
         System.out.println("----------BIENVENIDO----------");
@@ -71,5 +88,4 @@ public class Main {
         System.out.println("5. Ver estaciones guardadas ");
         System.out.println("6. Salir ");
     }
-
 }

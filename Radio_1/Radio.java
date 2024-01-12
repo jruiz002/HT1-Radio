@@ -1,6 +1,10 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
+/**
+ * Clase que representa el radio.
+ */
 public class Radio implements IRadio {
     private boolean state;
     private boolean frecuence;
@@ -9,6 +13,10 @@ public class Radio implements IRadio {
     private double listFM[];
     private double numberStationFM;
 
+    /**
+     * Constructor de la clase Radio.
+     * Inicializa los atributos con valores predeterminados.
+     */
     public Radio() {
         this.state = false;
         this.frecuence = true;
@@ -18,32 +26,37 @@ public class Radio implements IRadio {
         this.numberStationAM = 530;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void saveStation(int buttonId, double station) {
         Scanner sc = new Scanner(System.in);
         try {
             if (buttonId >= 1 && buttonId <= 12) {
-                if (frecuence) {//AM
-                    listAM[(buttonId-1)]= station;
-                    System.out.println("El botón " + buttonId + " almacena el número de estación " + station);
-                }else{//FM
-                    listFM[(buttonId-1)]= station;
-                    System.out.println("El botón " + buttonId + " almacena el número de estación " + station);
+                if (frecuence) {// AM
+                    listAM[(buttonId - 1)] = station;
+                    System.out.println("\nEl botón " + buttonId + " almacena el número de estación " + station);
+                } else {// FM
+                    listFM[(buttonId - 1)] = station;
+                    DecimalFormat df = new DecimalFormat("#.#");
+                String formattedStation = df.format(station);
+                System.out.println("\nEl botón " + buttonId + " almacena el número de estación " + formattedStation);
                 }
 
             } else {
-                System.out.println("Opción no válida. ");
+                System.out.println("\nOpción no válida. ");
             }
 
         } catch (Exception e) {
-            System.out.println("Entrada inválida, debe ingresar un número entero.");
+            System.out.println("\nEntrada inválida, debe ingresar un número entero.");
             sc.nextLine();
         }
 
     }
 
     /**
-     * Método que permite ver la frecuencia en la que se encuentra el radio.
+     * {@inheritDoc}
      */
     @Override
     public boolean isAm() {
@@ -54,7 +67,7 @@ public class Radio implements IRadio {
     }
 
     /**
-     * Método que permite saber si está apagado o encencido el radio.
+     * {@inheritDoc}
      */
     @Override
     public boolean isOn() {
@@ -65,7 +78,7 @@ public class Radio implements IRadio {
     }
 
     /**
-     * Método que permite seleccionar una estación guardada en los 12 botones
+     * {@inheritDoc}
      */
     @Override
     public double selectStation(int buttonId) {
@@ -75,60 +88,63 @@ public class Radio implements IRadio {
                 if (isAm()) { // LISTA AM
                     if (listAM[(buttonId - 1)] != 0.0) {
                         System.out.println(
-                                "La emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId - 1)]);
+                                "\nLa emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId - 1)]);
                     } else {
-                        System.out.println("Actualmente no se encuentra ninguna emisora en el botón " + buttonId);
+                        System.out.println("\nActualmente no se encuentra ninguna emisora en el botón " + buttonId);
                     }
 
                 } else { // LISTA FM
                     if (listFM[(buttonId - 1)] != 0.0) {
+                        DecimalFormat df = new DecimalFormat("#.#");
+                        String formattedStation = df.format(listFM[(buttonId - 1)]);
                         System.out.println(
-                                "La emisora puesta en el botón " + buttonId + " es la " + listFM[(buttonId - 1)]);
+                                "\nLa emisora puesta en el botón " + buttonId + " es la " + formattedStation);
                     } else {
-                        System.out.println("Actualmente no se encuentra ninguna emisora en el botón " + buttonId);
+                        System.out.println("\nactualmente no se encuentra ninguna emisora en el botón " + buttonId);
                     }
 
                 }
             } else {
-                System.out.println("Opción no válida. ");
+                System.out.println("\nOpción no válida. ");
             }
 
         } catch (InputMismatchException e) {
-            System.out.println("Entrada inválida, debe ingresar un número entero.");
+            System.out.println("\nEntrada inválida, debe ingresar un número entero.");
             sc.nextLine();
         }
         return 0;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void switchOnOff() {
         if (state) {
             state = false;
-            System.out.println("El radio se apagó. ");
         } else {
             state = true;
-            System.out.println("El radio se encendió. ");
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void switchAMFM() {
         if (isOn()) {
             if (frecuence) {
                 frecuence = false;
-                System.out.println("Frecuencia actual FM");
             } else {
                 frecuence = true;
-                System.out.println("Frecuencia actual AM");
             }
         } else {
-            System.out.println("El radio esta apagado.");
+            System.out.println("\nEl radio está apagado.");
         }
-
     }
 
     /**
-     * Método que permite cambiar la estación
+     * {@inheritDoc}
      */
     @Override
     public double nextStation() {
@@ -139,7 +155,6 @@ public class Radio implements IRadio {
                 } else {
                     numberStationAM += 10;
                 }
-                System.err.println("Estacion actual:" + numberStationAM);
                 return numberStationAM;
             } else {
                 if (numberStationFM == 107.9) {
@@ -147,28 +162,32 @@ public class Radio implements IRadio {
                 } else {
                     numberStationFM += 0.2;
                 }
-                System.err.println("Estacion actual:" + numberStationFM);
                 return numberStationFM;
             }
         } else {
-            System.out.println("El radio esta apagado.");
+            System.out.println("\nEl radio esta apagado.");
         }
         return 0;
     }
 
-    /*Función GET para obtener los valores de frecuencia y los numeros de estaciones */
-
-    
-
+    /**
+     * Obtiene el valor de la frecuencia actual.
+     */
     public boolean getFrecuence() {
         return this.frecuence;
     }
+
+    /**
+     * Obtiene el número de estación actual en AM.
+     */
     public int getNumberStationAM() {
         return this.numberStationAM;
     }
+
+    /**
+     * Obtiene el número de estación actual en FM.
+     */
     public double getNumberStationFM() {
         return this.numberStationFM;
     }
-
-
 }
