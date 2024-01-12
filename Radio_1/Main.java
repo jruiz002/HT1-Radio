@@ -1,11 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import org.junit.runner.JUnitCore;
-
 import java.text.DecimalFormat;
-
-import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
@@ -19,11 +15,17 @@ public class Main {
     public static void main(String[] args) {
 
         Result resultado = JUnitCore.runClasses(RadioTest.class);
-        // Mostrar resultados de las pruebas
+
+        // Mostrar resultados de todas las pruebas
         for (Failure failure : resultado.getFailures()) {
-            System.out.println(failure.toString());
+            System.out.println();
+            System.out.println("Fallo en la prueba: " + failure.toString());
         }
-        System.out.println("Pruebas unitarias pasadas: " + resultado.wasSuccessful());
+
+        System.out.println();
+        System.out.println("Total de pruebas ejecutadas: " + resultado.getRunCount());
+        System.out.println("Pruebas fallidas: " + resultado.getFailureCount());
+        
 
         // Variables de clase
         Scanner sc = new Scanner(System.in);

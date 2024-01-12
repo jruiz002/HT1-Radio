@@ -87,8 +87,7 @@ public class Radio implements IRadio {
             if (buttonId >= 1 && buttonId <= 12) {
                 if (isAm()) { // LISTA AM
                     if (listAM[(buttonId - 1)] != 0.0) {
-                        System.out.println(
-                                "\nLa emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId - 1)]);
+                        System.out.println("\nLa emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId - 1)]);
                     } else {
                         System.out.println("\nActualmente no se encuentra ninguna emisora en el botón " + buttonId);
                     }
