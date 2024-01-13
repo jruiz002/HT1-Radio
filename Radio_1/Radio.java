@@ -41,8 +41,7 @@ public class Radio implements IRadio {
                     listFM[(buttonId - 1)] = station;
                     DecimalFormat df = new DecimalFormat("#.#");
                     String formattedStation = df.format(station);
-                    System.out
-                            .println("\nEl botón " + buttonId + " almacena el número de estación " + formattedStation);
+                    System.out.println("\nEl botón " + buttonId + " almacena el número de estación " + formattedStation);
                 }
 
             } else {
@@ -87,8 +86,9 @@ public class Radio implements IRadio {
             if (buttonId >= 1 && buttonId <= 12) {
                 if (isAm()) { // LISTA AM
                     if (listAM[(buttonId - 1)] != 0.0) {
-                        System.out.println(
-                                "\nLa emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId - 1)]);
+                        System.out.println("\nLa emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId - 1)]);
+                        numberStationAM = (int) listAM[(buttonId - 1)];
+
                     } else {
                         System.out.println("\nActualmente no se encuentra ninguna emisora en el botón " + buttonId);
                     }
@@ -98,8 +98,9 @@ public class Radio implements IRadio {
                     if (listFM[(buttonId - 1)] != 0.0) {
                         DecimalFormat df = new DecimalFormat("#.#");
                         String formattedStation = df.format(listFM[(buttonId - 1)]);
-                        System.out.println(
-                                "\nLa emisora puesta en el botón " + buttonId + " es la " + formattedStation);
+                        System.out.println("\nLa emisora puesta en el botón " + buttonId + " es la " + formattedStation);
+                        numberStationFM = Double.parseDouble(formattedStation);
+
                     } else {
                         System.out.println("\nactualmente no se encuentra ninguna emisora en el botón " + buttonId);
                     }
@@ -192,10 +193,20 @@ public class Radio implements IRadio {
         return this.numberStationFM;
     }
 
+    /**
+     * Obtiene la lista de estaciones de radio AM almacenadas.
+     *
+     * @return Un array de tipo double que representa la lista de estaciones de radio AM.
+     */
     public double[] getListAM() {
         return this.listAM;
     }
 
+    /**
+     * Obtiene la lista de estaciones de radio FM almacenadas.
+     *
+     * @return Un array de tipo double que representa la lista de estaciones de radio FM.
+     */
     public double[] getListFM() {
         return this.listFM;
     }

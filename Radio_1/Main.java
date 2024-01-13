@@ -6,6 +6,13 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 /**
+ * @author José Ruiz, Gerardo Fernández y Alexander de la Cruz
+ * @version 1.0
+ * Fecha creación: 10/01/2024
+ * 
+ */
+
+/**
  * Clase principal que contiene el método main para ejecutar el programa de
  * control de un radio.
  */
@@ -14,6 +21,8 @@ public class Main {
      * Método principal que inicia el programa y controla el flujo del mismo.
      */
     public static void main(String[] args) {
+
+        // Se ejecutan las pruebas unitarias
 
         Result resultado = JUnitCore.runClasses(RadioTest.class);
 
@@ -27,6 +36,7 @@ public class Main {
         System.out.println("Total de pruebas ejecutadas: " + resultado.getRunCount());
         System.out.println("Pruebas fallidas: " + resultado.getFailureCount());
 
+        // Inicio del programa
         // Variables de clase
         Scanner sc = new Scanner(System.in);
         boolean continueProgram = true;
@@ -101,7 +111,7 @@ public class Main {
         System.out.println("2. Cambiar frecuencia ");
         System.out.println("3. Cambiar estación ");
         System.out.println("4. Guardar estación ");
-        System.out.println("5. Ver estaciones guardadas ");
+        System.out.println("5. Reproducir estación guardada ");
         System.out.println("6. Salir ");
     }
 }
