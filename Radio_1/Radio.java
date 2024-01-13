@@ -40,8 +40,9 @@ public class Radio implements IRadio {
                 } else {// FM
                     listFM[(buttonId - 1)] = station;
                     DecimalFormat df = new DecimalFormat("#.#");
-                String formattedStation = df.format(station);
-                System.out.println("\nEl botón " + buttonId + " almacena el número de estación " + formattedStation);
+                    String formattedStation = df.format(station);
+                    System.out
+                            .println("\nEl botón " + buttonId + " almacena el número de estación " + formattedStation);
                 }
 
             } else {
@@ -52,7 +53,6 @@ public class Radio implements IRadio {
             System.out.println("\nEntrada inválida, debe ingresar un número entero.");
             sc.nextLine();
         }
-
     }
 
     /**
@@ -82,12 +82,13 @@ public class Radio implements IRadio {
      */
     @Override
     public double selectStation(int buttonId) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);      
         try {
             if (buttonId >= 1 && buttonId <= 12) {
                 if (isAm()) { // LISTA AM
                     if (listAM[(buttonId - 1)] != 0.0) {
-                        System.out.println("\nLa emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId - 1)]);
+                        System.out.println(
+                                "\nLa emisora puesta en el botón " + buttonId + " es la " + listAM[(buttonId - 1)]);
                     } else {
                         System.out.println("\nActualmente no se encuentra ninguna emisora en el botón " + buttonId);
                     }
@@ -189,5 +190,13 @@ public class Radio implements IRadio {
      */
     public double getNumberStationFM() {
         return this.numberStationFM;
+    }
+
+    public double[] getListAM() {
+        return this.listAM;
+    }
+
+    public double[] getListFM() {
+        return this.listFM;
     }
 }

@@ -6,7 +6,8 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 /**
- * Clase principal que contiene el método main para ejecutar el programa de control de un radio.
+ * Clase principal que contiene el método main para ejecutar el programa de
+ * control de un radio.
  */
 public class Main {
     /**
@@ -25,7 +26,6 @@ public class Main {
         System.out.println();
         System.out.println("Total de pruebas ejecutadas: " + resultado.getRunCount());
         System.out.println("Pruebas fallidas: " + resultado.getFailureCount());
-        
 
         // Variables de clase
         Scanner sc = new Scanner(System.in);
@@ -33,16 +33,16 @@ public class Main {
         int opcion = 0;
         Radio radio = new Radio();
 
-        
         // Loop que controla el flujo del programa
         while (continueProgram) {
             try {
                 DecimalFormat df = new DecimalFormat("#.#");
-                String formattedStation = df.format(radio.getFrecuence() ? radio.getNumberStationAM() : radio.getNumberStationFM());
+                String formattedStation = df
+                        .format(radio.getFrecuence() ? radio.getNumberStationAM() : radio.getNumberStationFM());
 
                 System.err.println("\nEl radio se encuentra: " + (radio.isOn() ? "Encendido" : "Apagado") + "\n" +
-                "Frecuencia: " + (radio.getFrecuence() ? "AM" : "FM") + "\n" +
-                "Estación actual: " + formattedStation);
+                        "Frecuencia: " + (radio.getFrecuence() ? "AM" : "FM") + "\n" +
+                        "Estación actual: " + formattedStation);
                 Menu();
                 opcion = sc.nextInt();
 
@@ -54,12 +54,12 @@ public class Main {
                 } else if (opcion == 3) {
                     radio.nextStation();
                 } else if (opcion == 4) {
-                    if (radio.isOn()){
+                    if (radio.isOn()) {
                         System.out.println("Ingresa un valor entre 1-12 para guardar la estación actual en el botón: ");
-                        int optionSelectStation= sc.nextInt();
-                        if(radio.getFrecuence()){ //AM
+                        int optionSelectStation = sc.nextInt();
+                        if (radio.getFrecuence()) { // AM
                             radio.saveStation(optionSelectStation, radio.getNumberStationAM());
-                        }else{ //FM
+                        } else { // FM
                             radio.saveStation(optionSelectStation, radio.getNumberStationFM());
                         }
                     } else {
@@ -67,7 +67,7 @@ public class Main {
                     }
 
                 } else if (opcion == 5) {
-                    if (radio.isOn()){
+                    if (radio.isOn()) {
                         System.out.println("Ingresa un valor entre 1-12 para ver la estación guardada en el botón: ");
                         int optionSelectStation = sc.nextInt();
                         radio.selectStation(optionSelectStation);
@@ -89,7 +89,6 @@ public class Main {
                 sc.nextLine();
             }
         }
-
     }
 
     /**
