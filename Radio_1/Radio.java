@@ -6,12 +6,12 @@ import java.text.DecimalFormat;
  * Clase que representa el radio.
  */
 public class Radio implements IRadio {
-    private boolean state;
-    private boolean frecuence;
-    private int numberStationAM;
-    private double listAM[];
-    private double listFM[];
-    private double numberStationFM;
+    protected boolean state;
+    protected boolean frecuence;
+    protected int numberStationAM;
+    protected double listAM[];
+    protected double listFM[];
+    protected double numberStationFM;
 
     /**
      * Constructor de la clase Radio.
@@ -172,42 +172,4 @@ public class Radio implements IRadio {
         return 0;
     }
 
-    /**
-     * Obtiene el valor de la frecuencia actual.
-     */
-    public boolean getFrecuence() {
-        return this.frecuence;
-    }
-
-    /**
-     * Obtiene el número de estación actual en AM.
-     */
-    public int getNumberStationAM() {
-        return this.numberStationAM;
-    }
-
-    /**
-     * Obtiene el número de estación actual en FM.
-     */
-    public double getNumberStationFM() {
-        return this.numberStationFM;
-    }
-
-    /**
-     * Obtiene la lista de estaciones de radio AM almacenadas.
-     *
-     * @return Un array de tipo double que representa la lista de estaciones de radio AM.
-     */
-    public double[] getListAM() {
-        return this.listAM;
-    }
-
-    /**
-     * Obtiene la lista de estaciones de radio FM almacenadas.
-     *
-     * @return Un array de tipo double que representa la lista de estaciones de radio FM.
-     */
-    public double[] getListFM() {
-        return this.listFM;
-    }
 }

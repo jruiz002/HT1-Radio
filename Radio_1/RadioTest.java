@@ -13,6 +13,7 @@ public class RadioTest {
      */
     @Test
     public void testNextStationAM() {
+        
         // Se crea una instancia de la clase Radio para realizar la prueba.
         Radio radio = new Radio();
 
@@ -61,6 +62,6 @@ public class RadioTest {
         radio.saveStation(buttonId, station);
 
         // Se verifica si se guarda la estacion exitosamente en el boton deseado
-        assertEquals(station, radio.getListAM()[buttonId - 1]);
+        assertEquals(station, radio.listAM[buttonId - 1]);
     }
 }

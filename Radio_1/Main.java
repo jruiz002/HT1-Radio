@@ -48,10 +48,10 @@ public class Main {
             try {
                 DecimalFormat df = new DecimalFormat("#.#");
                 String formattedStation = df
-                        .format(radio.getFrecuence() ? radio.getNumberStationAM() : radio.getNumberStationFM());
+                        .format(radio.frecuence ? radio.numberStationAM : radio.numberStationFM);
 
                 System.err.println("\nEl radio se encuentra: " + (radio.isOn() ? "Encendido" : "Apagado") + "\n" +
-                        "Frecuencia: " + (radio.getFrecuence() ? "AM" : "FM") + "\n" +
+                        "Frecuencia: " + (radio.frecuence ? "AM" : "FM") + "\n" +
                         "Estación actual: " + formattedStation);
                 Menu();
                 opcion = sc.nextInt();
@@ -67,10 +67,10 @@ public class Main {
                     if (radio.isOn()) {
                         System.out.println("Ingresa un valor entre 1-12 para guardar la estación actual en el botón: ");
                         int optionSelectStation = sc.nextInt();
-                        if (radio.getFrecuence()) { // AM
-                            radio.saveStation(optionSelectStation, radio.getNumberStationAM());
+                        if (radio.frecuence) { // AM
+                            radio.saveStation(optionSelectStation, radio.numberStationAM);
                         } else { // FM
-                            radio.saveStation(optionSelectStation, radio.getNumberStationFM());
+                            radio.saveStation(optionSelectStation, radio.numberStationFM);
                         }
                     } else {
                         System.out.println("El radio esta apagado.");
