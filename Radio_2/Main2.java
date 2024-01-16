@@ -37,7 +37,7 @@ public class Main2 {
                         .format(!radio.amfm ? radio.numberAM : radio.numberFM);
 
                 System.err.println("\nEl radio se encuentra: " + (radio.isOn() ? "Encendido" : "Apagado") + "\n" +
-                        "Frecuencia: " + (radio.amfm ? "AM" : "FM") + "\n" +
+                        "Frecuencia: " + (!radio.amfm ? "AM" : "FM") + "\n" +
                         "Estación actual: " + formattedStation);
                 Menu();
                 opcion = sc.nextInt();
